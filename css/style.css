@@ -376,16 +376,43 @@ footer{
 }
 
 @media(max-width:850px){
+  .hero{
+    padding:38px 14px 35px;
+    min-height:auto;
+  }
+
   .hero-card{
     grid-template-columns:1fr;
+    gap:14px;
   }
 
   .photo-stack{
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .photo{
+    padding:5px;
+    border-radius:18px;
+    border:2px solid rgba(233,202,107,.75);
+    box-shadow:0 12px 26px rgba(0,0,0,.30);
+    transform:none;
+  }
+
+  .photo:nth-child(2){
+    transform:none;
   }
 
   .photo img{
-    height:210px;
+    height:170px;
+    border-radius:13px;
+    object-fit:cover;
+  }
+
+  .main-title{
+    padding:24px 16px;
+    border-radius:28px;
+    margin:4px 0;
   }
 
   .detail-grid{
@@ -408,8 +435,51 @@ footer{
     padding:48px 16px;
   }
 
+  .hero{
+    padding:28px 14px 32px;
+  }
+
+  .hero-card{
+    gap:12px;
+  }
+
+  .photo-stack{
+    grid-template-columns:repeat(2,1fr);
+    gap:9px;
+  }
+
+  .photo{
+    border-radius:16px;
+    padding:4px;
+    border:2px solid rgba(233,202,107,.75);
+  }
+
+  .photo img{
+    height:135px;
+    border-radius:12px;
+  }
+
+  .main-title{
+    order:2;
+    padding:24px 15px;
+    border-radius:26px;
+  }
+
+  .hero-card .photo-stack:first-child{
+    order:1;
+  }
+
+  .hero-card .photo-stack:last-child{
+    order:3;
+  }
+
   .main-title h1{
-    font-size:30px;
+    font-size:27px;
+  }
+
+  .age-badge{
+    font-size:13px;
+    padding:10px 18px;
   }
 
   .cover-heading{
@@ -418,14 +488,6 @@ footer{
 
   .countdown{
     grid-template-columns:repeat(2,1fr);
-  }
-
-  .photo-stack{
-    grid-template-columns:1fr;
-  }
-
-  .photo img{
-    height:280px;
   }
 
   .detail-grid{
