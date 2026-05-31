@@ -1,150 +1,134 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Undangan Ulang Tahun</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Undangan Ulang Tahun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-  <div class="leaf l1">❦</div>
-  <div class="leaf l2">❧</div>
-  <div class="leaf l3">❦</div>
-  <div class="leaf l4">❧</div>
 
-  <div class="cover" id="cover">
-    <div class="cover-card">
-      <div class="small-title">Undangan Ulang Tahun</div>
+<div class="star-bg" id="starBg"></div>
+<canvas id="particles-canvas"></canvas>
 
-      <div class="cover-img">
-        <img src="assets/foto-5.jpeg" alt="Foto ulang tahun">
+<div class="leaf l1">❦</div>
+<div class="leaf l2">❧</div>
+<div class="leaf l3">❦</div>
+<div class="leaf l4">❧</div>
+
+<div class="balloons-container" id="balloonsContainer">
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎀</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎉</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎀</div>
+  <div class="balloon">🎈</div>
+  <div class="balloon">🎉</div>
+</div>
+
+<div class="confetti-container" id="confettiContainer"></div>
+
+<div class="cover" id="cover">
+  <div class="cover-card">
+    <span class="cover-star cs1">✦</span>
+    <span class="cover-star cs2">★</span>
+    <span class="cover-star cs3">✦</span>
+    <span class="cover-star cs4">★</span>
+    <span class="cover-star cs5">✦</span>
+    <span class="cover-star cs6">★</span>
+
+    <div class="small-title">Undangan Ulang Tahun</div>
+
+    <div class="cover-img">
+      <img src="assets/foto-5.jpeg" alt="Foto ulang tahun">
+    </div>
+
+    <h2 class="cover-heading">2nd Birthday Celebration</h2>
+    <div class="ribbon">✦ Hafsha Prajalita ✦</div>
+    <p>Dengan penuh rasa syukur, kami mengundang keluarga dan sahabat untuk hadir dalam acara ulang tahun putri kecil kami.</p>
+    <button class="btn" onclick="openInvitation()">🎉 Buka Undangan 🎉</button>
+  </div>
+</div>
+
+<audio id="birthdayMusic" loop preload="auto">
+  <source src="assets/birthday.mp3" type="audio/mpeg">
+</audio>
+<button class="music-player" id="musicBtn" onclick="toggleMusic()">♫</button>
+
+<header class="hero">
+  <div class="hero-card">
+    <div class="top-gallery">
+      <div class="photo photo-large">
+        <img src="assets/foto-1.png" alt="Foto 1">
       </div>
+      <div class="photo"><img src="assets/foto-2.png" alt="Foto 2"></div>
+      <div class="photo"><img src="assets/foto-3.png" alt="Foto 3"></div>
+      <div class="photo"><img src="assets/foto-4.png" alt="Foto 4"></div>
+    </div>
 
-      <h2 class="cover-heading">2nd Birthday Celebration</h2>
-
-      <p>Dengan penuh rasa syukur, kami mengundang keluarga dan sahabat untuk hadir dalam acara ulang tahun putri kecil kami.</p>
-
-      <button class="btn" onclick="openInvitation()">Buka Undangan</button>
+    <div class="main-title">
+      <div class="crown">♛</div>
+      <div class="small-title">Anda Diundang Untuk</div>
+      <h1>Little Princess<br>Ulang Tahun ke-2</h1>
+      <div class="age-badge" id="ageText">Hafsha Prajalita Sutiawan</div>
+      <p>Dengan penuh rasa syukur, kami mengundang keluarga dan sahabat untuk hadir dalam acara ulang tahun yang penuh kebahagiaan.</p>
     </div>
   </div>
+</header>
 
-  <audio id="birthdayMusic" loop preload="auto">
-    <source src="assets/birthday.mp3" type="audio/mpeg">
-  </audio>
+<section>
+  <h2 class="section-title">Countdown Acara</h2>
+  <p>Menuju hari bahagia yang kami nantikan.</p>
+  <div class="countdown">
+    <div class="time-box"><strong id="days">00</strong><span>Hari</span></div>
+    <div class="time-box"><strong id="hours">00</strong><span>Jam</span></div>
+    <div class="time-box"><strong id="minutes">00</strong><span>Menit</span></div>
+    <div class="time-box"><strong id="seconds">00</strong><span>Detik</span></div>
+  </div>
+</section>
 
-  <button class="music-player" id="musicBtn" onclick="toggleMusic()">♫</button>
+<section>
+  <h2 class="section-title">Detail Acara</h2>
+  <div class="detail-grid">
+    <div class="detail-box"><div class="icon">▣</div><span>Tanggal</span><p id="dateText">Minggu, 28 Juni 2026</p></div>
+    <div class="detail-box"><div class="icon">◷</div><span>Waktu</span><p id="timeText">09.00 WIB sampai selesai</p></div>
+    <div class="detail-box"><div class="icon">⌖</div><span>Tempat</span><p id="placeText">Rumah Kami</p></div>
+    <div class="detail-box"><div class="icon">✦</div><span>Dress Code</span><p>Smart Casual</p></div>
+  </div>
+</section>
 
-  <header class="hero">
-    <div class="hero-card">
+<section>
+  <h2 class="section-title">Galeri Foto</h2>
+  <p>Beberapa momen indah dari putri kecil kami.</p>
+  <div class="gallery">
+    <img src="assets/foto-5.jpeg" alt="Galeri 5">
+    <img src="assets/foto-6.jpeg" alt="Galeri 6">
+    <img src="assets/foto-7.jpeg" alt="Galeri 7">
+    <img src="assets/foto-8.jpeg" alt="Galeri 8">
+    <img src="assets/foto-9.jpeg" alt="Galeri 9">
+    <img src="assets/foto-10.jpeg" alt="Galeri 10">
+    <img src="assets/foto-11.jpeg" alt="Galeri 11">
+    <img src="assets/foto-12.jpeg" alt="Galeri 12">
+    <img src="assets/foto-13.jpeg" alt="Galeri 13">
+    <img src="assets/foto-14.jpeg" alt="Galeri 14">
+    <img src="assets/foto-15.jpeg" alt="Galeri 15">
+    <img src="assets/foto-16.jpeg" alt="Galeri 16">
+  </div>
+</section>
 
-      <div class="top-gallery">
-        <div class="photo photo-large">
-          <img src="assets/foto-1.png" alt="Foto 1">
-        </div>
+<section>
+  <h2 class="section-title">Ucapan dan Doa</h2>
+  <div class="wish-card">
+    <p>🌟 Terima kasih atas doa, kasih sayang, dan kehadiran yang diberikan. Semoga hari spesial ini menjadi kenangan yang indah bagi keluarga kami. 🌟</p>
+  </div>
+</section>
 
-        <div class="photo">
-          <img src="assets/foto-2.png" alt="Foto 2">
-        </div>
+<footer>Muhammad Faiz Alfarizi &copy; 2026</footer>
 
-        <div class="photo">
-          <img src="assets/foto-3.png" alt="Foto 3">
-        </div>
-
-        <div class="photo">
-          <img src="assets/foto-4.png" alt="Foto 4">
-        </div>
-      </div>
-
-      <div class="main-title">
-        <div class="crown">♛</div>
-        <div class="small-title">Anda Diundang Untuk</div>
-        <h1>Little Princess<br>Ulang Tahun ke-2</h1>
-        <div class="age-badge" id="ageText">Hafsha Prajalita Sutiawan</div>
-        <p>Dengan penuh rasa syukur, kami mengundang keluarga dan sahabat untuk hadir dalam acara ulang tahun yang penuh kebahagiaan.</p>
-      </div>
-
-    </div>
-  </header>
-
-  <section>
-    <h2 class="section-title">Countdown Acara</h2>
-    <p>Menuju hari bahagia yang kami nantikan.</p>
-
-    <div class="countdown">
-      <div class="time-box"><strong id="days">00</strong><span>Hari</span></div>
-      <div class="time-box"><strong id="hours">00</strong><span>Jam</span></div>
-      <div class="time-box"><strong id="minutes">00</strong><span>Menit</span></div>
-      <div class="time-box"><strong id="seconds">00</strong><span>Detik</span></div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Detail Acara</h2>
-
-    <div class="detail-grid">
-      <div class="detail-box">
-        <div class="icon">▣</div>
-        <span>Tanggal</span>
-        <p id="dateText">Minggu, 28 Juni 2026</p>
-      </div>
-
-      <div class="detail-box">
-        <div class="icon">◷</div>
-        <span>Waktu</span>
-        <p id="timeText">09.00 WIB sampai selesai</p>
-      </div>
-
-      <div class="detail-box">
-        <div class="icon">⌖</div>
-        <span>Tempat</span>
-        <p id="placeText">Rumah Kami</p>
-      </div>
-
-      <div class="detail-box">
-        <div class="icon">✦</div>
-        <span>Dress Code</span>
-        <p>Smart Casual</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Galeri Foto</h2>
-    <p>Beberapa momen indah dari putri kecil kami.</p>
-
-    <div class="gallery">
-      <img src="assets/foto-5.jpeg" alt="Galeri 5">
-      <img src="assets/foto-6.jpeg" alt="Galeri 6">
-      <img src="assets/foto-7.jpeg" alt="Galeri 7">
-      <img src="assets/foto-8.jpeg" alt="Galeri 8">
-      <img src="assets/foto-9.jpeg" alt="Galeri 9">
-      <img src="assets/foto-10.jpeg" alt="Galeri 10">
-      <img src="assets/foto-11.jpeg" alt="Galeri 11">
-      <img src="assets/foto-12.jpeg" alt="Galeri 12">
-      <img src="assets/foto-13.jpeg" alt="Galeri 13">
-      <img src="assets/foto-14.jpeg" alt="Galeri 14">
-      <img src="assets/foto-15.jpeg" alt="Galeri 15">
-      <img src="assets/foto-16.jpeg" alt="Galeri 16">
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Ucapan dan Doa</h2>
-    <div class="wish-card">
-      <p>Terima kasih atas doa, kasih sayang, dan kehadiran yang diberikan. Semoga hari spesial ini menjadi kenangan yang indah bagi keluarga kami.</p>
-    </div>
-  </section>
-
-  <footer>
-    Muhammad Faiz Alfarizi &copy; 2026
-  </footer>
-
-  <script src="js/script.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
