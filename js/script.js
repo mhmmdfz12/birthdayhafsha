@@ -2,7 +2,7 @@ const invitation = {
   age: 2,
   eventDate: '2026-06-28T09:00:00',
   dateText: 'Minggu, 28 Juni 2026',
-  timeText: '09.00 WIB sampai selesai',
+  timeText: '10.00 WIB sampai selesai',
   placeText: 'Rumah Kami',
 };
 
